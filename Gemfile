@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'execjs'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'sqlite3'
 gem 'puma', '~> 3.0'
@@ -25,7 +25,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'autoprefixer-rails'
 
 #bootstrapping
-gem 'bootstrap', '~>4.0.0.alpha4'
+gem 'bootstrap', '~>4.0.0.alpha5'
+
+#Devise
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
