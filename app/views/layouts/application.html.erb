@@ -19,12 +19,11 @@
           <li class="nav-item"><%= link_to "Contact", "#", class: "nav-link" %></li>
 		  <% if user_signed_in? %>
 			<li class="nav-item pull-md-right"><%= link_to "Log Out", 
-			sign_out_path, method: :delete, class: "nav-link" %>
-			</li>
+			sign_out_path, method: :delete, class: "nav-link" %></li>
 		  <% else %>
-			<li class="nav-item pull-md-right"><%= link_to "Sign Up", 
-			sign_up_path, class: "nav-link btn btn-primary" %>
-			<li class="nav-item pull-md-right"><%= link_to "Sign In", 
+			 <li class="nav-item pull-md-right"><%= link_to "Sign Up", 
+			 sign_up_path, class: "btn btn-primary" %>
+			 <li class="nav-item pull-md-right"><%= link_to "Sign In", 
 			sign_in_path, class: "nav-link" %>
 			</li>
 			<% end %>

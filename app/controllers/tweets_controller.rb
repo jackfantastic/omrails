@@ -1,5 +1,5 @@
 class TweetsController < ApplicationController
-
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /tweets
   def index
     @tweets = Tweet.all
@@ -22,7 +22,7 @@ class TweetsController < ApplicationController
 
   # POST /tweets
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = current_user.tweets.new(tweet_params)
       if @tweet.save
         redirect_to @tweet, notice: 'Tweet was successfully created.'
       else

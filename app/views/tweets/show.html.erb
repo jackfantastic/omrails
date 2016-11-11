@@ -2,7 +2,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @tweet.user %>
+  <%= @tweet.user.username %>
 </p>
 
 <p>
@@ -10,7 +10,10 @@
   <%= @tweet.content %>
 </p>
 
-<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+<% if @tweet.user == current_user %>
+	<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+<% end %>
+
 <%= link_to 'Back', tweets_path %>
 
 </div>

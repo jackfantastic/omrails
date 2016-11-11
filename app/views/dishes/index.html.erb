@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<div class = "container"
+
+<h3>Dishes</h3>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Restaurant</th>
+      <th>Location</th>
+      <th>Cost</th>
+      <th>Ingredient</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dishes.each do |dish| %>
+      <tr>
+        <td><%= dish.restaurant %></td>
+        <td><%= dish.location %></td>
+        <td><%= dish.cost %></td>
+        <td><%= dish.name %></td>
+        <td><%= dish.ingredient %></td>
+        <td><%= link_to 'Show', dish %></td>
+        <td><%= link_to 'Edit', edit_dish_path(dish) %></td>
+        <td><%= link_to 'Destroy', dish, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dish', new_dish_path %>
+</div>
