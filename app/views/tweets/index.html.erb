@@ -1,34 +1,31 @@
 <div class ="container">
-
-  <h1>Tweets</h1>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Content</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @tweets.each do |tweet| %>
-        <tr>
-          <td><%= tweet.user.username %></td>
-          <td><%= tweet.content %></td>
-          <td><%= link_to 'Show', tweet %></td>
-          <% if tweet.user == current_user %>
-            <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-            <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-        </tr>
+  <div class = "row">
+     <div class = "col-md-4">
+      <div class="card card-block">
+        <h4 class="card-title">Your Account</h4>
+          <% if user_signed_in? %>
+            <p class="card-text"><%= current_user.username %></p>
+            <p><a href="user_path" class="btn btn-primary">Profile</a></p>
+            <p><a href="#" class="card-link"><%= current_user.email %></a></p>  
+          <% else %>
+            <p>Log in</p>
+         <% end %>
+      </div>
+    </div> 
+    <div class = "col-md-8">
+      <% if user_signed_in? %>
+          <%= link_to 'New Tweet', new_tweet_path %>
       <% end %>
-    </tbody>
-  </table>
-
-  <br>
-    <% if user_signed_in? %>
-      <%= link_to 'New Tweet', new_tweet_path %>
-    <% end %>
-
+      <ul class="list-group">
+          <% @tweets.each do |tweet| %>
+              <%= link_to tweet, class: "list-group-item list-group-item-action" do %>
+              <h5 class="list-group-item-heading"><%= tweet.user.username %></h5>
+              <p class="list-group-item-text"><%= tweet.content %></p>
+                <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+                <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
+          <% end %>
+      </ul>
+    </div> 
+  </div>           
 </div>
